@@ -28,3 +28,13 @@ h4 {
 .panel {
   @apply rounded-2xl border border-slate-700/70 bg-panel p-5;
 }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+@keyframes shimmer-text {
+  0% { background-position: -150% 0; }
+  100% { background-position: 150% 0; }
+}

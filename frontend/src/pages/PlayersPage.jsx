@@ -1,98 +1,133 @@
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { listPlayers, listTeams } from "../services/api";
+import roster from "../data/players.json";
+import "../styles/TeamsSection.css";
 
 export default function PlayersPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [teams, setTeams] = useState([]);
-  const [players, setPlayers] = useState([]);
-  const [search, setSearch] = useState(searchParams.get("search") || "");
-  const teamId = searchParams.get("teamId") || "";
-
-  useEffect(() => {
-    listTeams().then(setTeams);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(async () => {
-      const params = {
-        team_id: teamId || undefined,
-        search: search || undefined,
-        limit: 100
-      };
-      const data = await listPlayers(params);
-      setPlayers(data);
-    }, 250);
-    return () => clearTimeout(timer);
-  }, [teamId, search]);
-
-  const selectedTeamName = useMemo(() => {
-    const team = teams.find((item) => String(item.id) === String(teamId));
-    return team?.name || "All Teams";
-  }, [teams, teamId]);
+  const leadership = roster.leadership || {};
+  const players = roster.sections.flatMap((section) => section.players || []);
 
   return (
-    <section className="space-y-6">
-      <div>
-        <h1 className="text-4xl font-bold text-white">Players</h1>
-        <p className="text-slate-400">Showing: {selectedTeamName}</p>
-      </div>
+    <section className="teams-container relative">
+      {/* Team Leadership Section */}
+      <div className="mb-10 space-y-5">
+        <div className="teams-header">
+          <div className="header-accent"></div>
+          <h2 className="teams-title">Team Leadership</h2>
+        </div>
 
-      <div className="grid gap-3 md:grid-cols-3">
-        <select
-          value={teamId}
-          onChange={(event) => {
-            const nextParams = new URLSearchParams(searchParams);
-            if (event.target.value) nextParams.set("teamId", event.target.value);
-            else nextParams.delete("teamId");
-            setSearchParams(nextParams);
-          }}
-          className="rounded-xl border border-slate-700 bg-panel px-4 py-2 text-white focus:border-accent focus:outline-none"
-        >
-          <option value="">All Teams</option>
-          {teams.map((team) => (
-            <option key={team.id} value={team.id}>
-              {team.name}
-            </option>
-          ))}
-        </select>
-        <input
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search players..."
-          className="rounded-xl border border-slate-700 bg-panel px-4 py-2 text-white placeholder:text-slate-500 focus:border-accent focus:outline-none md:col-span-2"
-        />
-      </div>
+        <div className="leadership-grid">
+          {/* Owner Card */}
+          {leadership.owner && (
+            <article className="owner-card">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent"></div>
+              <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-400/10 blur-3xl transition duration-500 group-hover:bg-amber-400/20"></div>
+              
+              <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                <div className="owner-info">
+                  <div className="owner-image-wrapper">
+                    <img
+                      src={leadership.owner.image}
+                      alt={leadership.owner.name}
+                      loading="lazy"
+                      className="owner-image"
+                    />
+                  </div>
+                  <div>
+                    <span className="role-badge">{leadership.owner.role}</span>
+                    <h3 className="owner-name">{leadership.owner.name}</h3>
+                    <p className="owner-desc">{leadership.owner.description}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          )}
 
-      <div className="overflow-hidden rounded-2xl border border-slate-700">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-panel text-left">
-            <thead className="bg-panelSoft text-sm uppercase tracking-[0.1em] text-slate-300">
-              <tr>
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Role</th>
-                <th className="px-4 py-3">Runs</th>
-                <th className="px-4 py-3">Wickets</th>
-                <th className="px-4 py-3">Strike Rate</th>
-                <th className="px-4 py-3">Team</th>
-              </tr>
-            </thead>
-            <tbody>
-              {players.map((player) => (
-                <tr key={player.id} className="border-t border-slate-800 text-sm text-slate-200">
-                  <td className="px-4 py-3 font-semibold text-white">{player.name}</td>
-                  <td className="px-4 py-3">{player.role}</td>
-                  <td className="px-4 py-3">{player.runs}</td>
-                  <td className="px-4 py-3">{player.wickets}</td>
-                  <td className="px-4 py-3">{player.strike_rate}</td>
-                  <td className="px-4 py-3">{player.team_name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* Manager Card */}
+          {leadership.manager && (
+            <article className="leadership-card manager">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 via-transparent to-transparent"></div>
+              <div className="relative z-10 flex items-center gap-5">
+                <div className="leadership-image-wrapper relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10">
+                  <img
+                    src={leadership.manager.image}
+                    alt={leadership.manager.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <span className="role-badge">{leadership.manager.role}</span>
+                  <h3 className="mt-2 text-2xl font-bold uppercase tracking-[0.04em] text-white leading-tight">
+                    {leadership.manager.name}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
+                    {leadership.manager.description}
+                  </p>
+                </div>
+              </div>
+            </article>
+          )}
+
+          {/* Coach Card */}
+          {leadership.coach && (
+            <article className="leadership-card coach">
+              <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/10 via-transparent to-transparent"></div>
+              <div className="relative z-10 flex items-center gap-5">
+                <div className="leadership-image-wrapper relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10">
+                  <img
+                    src={leadership.coach.image}
+                    alt={leadership.coach.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <span className="role-badge">{leadership.coach.role}</span>
+                  <h3 className="mt-2 text-2xl font-bold uppercase tracking-[0.04em] text-white leading-tight">
+                    {leadership.coach.name}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
+                    {leadership.coach.description}
+                  </p>
+                </div>
+              </div>
+            </article>
+          )}
         </div>
       </div>
-      {players.length === 0 ? <p className="text-slate-400">No players found.</p> : null}
+
+      {/* Players Section */}
+      {players.length > 0 ? (
+        <div>
+          <div className="teams-header">
+            <div className="header-accent squad-accent"></div>
+            <h2 className="teams-title">Players</h2>
+          </div>
+          <div className="players-grid">
+            {players.map((player) => (
+              <article key={player.id} className="player-card">
+                <div className="player-image-box">
+                  <img
+                    src={player.image}
+                    alt={player.name}
+                    loading="lazy"
+                    className="player-image"
+                  />
+                </div>
+
+                <div className="player-overlay">
+                  <h2 className="player-name">{player.name}</h2>
+                  <p className="player-role">{player.role}</p>
+                  <p className="player-profile">{player.profile}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center text-slate-500">
+          No players available.
+        </div>
+      )}
     </section>
   );
 }

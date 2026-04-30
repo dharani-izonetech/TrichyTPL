@@ -2,22 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-import pic1 from "../../pics/pic1.jpg";
-import pic2 from "../../pics/pic2.jpg";
+import pic1 from "../../pics/pic1.jpeg";
 import pic3 from "../../pics/pic3.jpg";
 import pic4 from "../../pics/pic4.jpg";
-import pic5 from "../../pics/pic5.jpg";
 
 const defaultSlides = [
   {
     image: pic1,
     title: "Feel The Pulse",
     subtitle: "Every over matters in the Trichy Player League Championship."
-  },
-  {
-    image: pic2,
-    title: "Packed Nights",
-    subtitle: "Experience the electric atmosphere of stadium glory."
   },
   {
     image: pic3,
@@ -28,11 +21,6 @@ const defaultSlides = [
     image: pic4,
     title: "Infinite Energy",
     subtitle: "From the first toss to the final trophy missing nothing."
-  },
-  {
-    image: pic5,
-    title: "Lead The Pack",
-    subtitle: "Track the heroes and icons of our local leaderboard."
   }
 ];
 
@@ -92,16 +80,16 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
 
   const contentVariants = {
     hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       filter: "blur(0px)",
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: [0.16, 1, 0.3, 1], // expo out
         staggerChildren: 0.1,
         delayChildren: 0.2
-      } 
+      }
     },
   };
 
@@ -139,17 +127,17 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
           {/* Atmospheric Layering */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent" />
-          
+
           {/* Spatial Bloom */}
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1], 
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
               opacity: [0.2, 0.3, 0.2],
               x: [0, 20, 0],
               y: [0, -20, 0]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-20 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-accent/20 blur-[120px]" 
+            className="absolute -left-20 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-accent/20 blur-[120px]"
           />
 
           {/* Main Content */}
@@ -167,8 +155,8 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                   TPL CHAMPIONSHIP
                 </p>
               </motion.div>
-              
-              <motion.h1 
+
+              <motion.h1
                 variants={letterVariants}
                 className="mt-6 flex flex-col font-black uppercase leading-none tracking-tighter text-white"
               >
@@ -177,7 +165,7 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                 </span>
                 <span className="relative text-5xl md:text-8xl lg:text-[8rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/30">
                   Player
-                  <motion.span 
+                  <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
@@ -193,24 +181,19 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                 {slides[activeIndex].subtitle}
               </motion.p>
 
-              <motion.div variants={letterVariants} className="mt-12 flex items-center gap-6">
-                <Link
-                  to="/matches"
-                  className="group relative flex items-center gap-4 overflow-hidden rounded-full border border-white/20 bg-white/5 px-10 py-5 text-sm font-black tracking-widest text-white backdrop-blur-md transition-all hover:bg-white hover:text-black"
-                >
-                  <span className="relative z-10 uppercase">Discover Matches</span>
-                  <div className="absolute inset-x-0 bottom-0 h-0 w-full bg-white transition-all group-hover:h-full" />
-                </Link>
-                
+              <motion.div variants={letterVariants} className="mt-12">
                 <Link
                   to="/live-match"
-                  className="flex items-center gap-3 text-sm font-black uppercase tracking-widest text-white transition-colors hover:text-accent"
+                  className="group relative flex items-center gap-4 overflow-hidden rounded-full border border-white/20 bg-white/5 px-10 py-5 text-sm font-black tracking-[0.2em] text-white backdrop-blur-md transition-all hover:bg-white hover:text-black w-fit"
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                  <span className="relative z-10 flex items-center gap-3">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" />
+                    </span>
+                    WATCH LIVE
                   </span>
-                  Watch Live
+                  <div className="absolute inset-x-0 bottom-0 h-0 w-full bg-white transition-all group-hover:h-full" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -232,9 +215,9 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
           <p className="text-5xl font-black italic tracking-tighter text-white/10">0{activeIndex + 1}</p>
           <div className="flex gap-2">
             {slides.map((_, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
-                animate={{ 
+                animate={{
                   width: i === activeIndex ? 32 : 8,
                   backgroundColor: i === activeIndex ? "rgba(239, 68, 68, 1)" : "rgba(255, 255, 255, 0.2)"
                 }}
@@ -270,9 +253,9 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
       {/* Mobile Only Indicators */}
       <div className="absolute bottom-8 left-1/2 z-40 flex -translate-x-1/2 gap-2 md:hidden">
         {slides.map((_, i) => (
-          <div 
-            key={i} 
-            className={`h-1.5 rounded-full transition-all ${i === activeIndex ? "w-8 bg-accent" : "w-2 bg-white/20"}`} 
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all ${i === activeIndex ? "w-8 bg-accent" : "w-2 bg-white/20"}`}
           />
         ))}
       </div>

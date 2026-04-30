@@ -111,47 +111,65 @@ export default function GalleryPage() {
   };
 
   return (
-    <section className="space-y-6">
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        
+    <section className="space-y-8 pb-20">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+          <div className="h-6 w-1.5 rounded-full bg-accent"></div>
+          <h1 className="text-3xl font-black uppercase tracking-wider text-white">Moments <span className="text-accent">Gallery</span></h1>
+        </div>
+        <p className="text-slate-400 font-medium">A professional collection of tournament highlights, perfectly fitted for every orientation.</p>
+      </div>
+
+      {/* Professional Masonry Collage */}
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {images.map((image, index) => (
-          <button
+          <article
             key={image.id}
-            type="button"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-900 shadow-2xl transition duration-500 hover:-translate-y-2 hover:border-accent/50 cursor-pointer break-inside-avoid"
             onClick={() => setActiveIndex(index)}
-            className="group overflow-hidden rounded-xl border border-slate-700 bg-panelSoft text-left transition duration-300 hover:-translate-y-2 hover:border-accent hover:shadow-[0_16px_28px_rgba(14,20,35,0.55)]"
           >
             <img
               src={image.full_url}
               alt={`Gallery image ${index + 1}`}
-              className="h-52 w-full object-cover transition duration-500 ease-out group-hover:scale-125"
+              className="w-full h-auto transition duration-700 group-hover:scale-[1.05]"
             />
-          </button>
+            {/* Professional Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Tournament Moment</p>
+              <h3 className="mt-1 text-xl font-black uppercase tracking-tight text-white">
+                View Full Moment
+              </h3>
+            </div>
+          </article>
         ))}
       </div>
 
       {!loading && images.length === 0 ? (
-        <p className="rounded-xl border border-slate-700 bg-panel p-4 text-slate-400">
-          No uploaded images yet. Add images from the Admin Panel.
-        </p>
+        <div className="rounded-[2.5rem] border border-white/5 bg-panelSoft/30 p-20 text-center backdrop-blur-sm">
+          <p className="text-slate-400">No images found. Upload moments from the Admin Panel.</p>
+        </div>
       ) : null}
 
       {modalOpen ? (
-        <div className="fixed inset-0 z-50 bg-black/90 p-3 md:p-6">
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl p-3 md:p-6 flex items-center justify-center">
           <div className="mx-auto flex h-full w-full max-w-7xl flex-col">
-            <div className="mb-3 flex items-center justify-end">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="h-5 w-1 rounded-full bg-accent"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-white">Detail View</span>
+              </div>
               <button
                 type="button"
                 onClick={() => setActiveIndex(null)}
-                className="rounded-full border border-slate-500 px-4 py-1.5 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+                className="rounded-full bg-white/5 border border-white/10 px-6 py-2 text-xs font-black uppercase tracking-widest text-white transition hover:bg-accent hover:border-accent"
               >
                 Close
               </button>
             </div>
 
-            <div className="relative flex-1 overflow-hidden rounded-2xl border border-slate-700 bg-black">
+            <div className="relative flex-1 overflow-hidden rounded-[2.5rem] border border-white/5 bg-slate-900/50 shadow-2xl">
               <div
-                className={`flex h-full ${isDragging ? "" : "transition-transform duration-300 ease-out"}`}
+                className={`flex h-full ${isDragging ? "" : "transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)"}`}
                 style={{
                   transform: `translateX(calc(-${activeIndex * 100}% + ${touchOffset}px))`
                 }}
@@ -160,11 +178,11 @@ export default function GalleryPage() {
                 onTouchEnd={handleTouchEnd}
               >
                 {images.map((image, index) => (
-                  <div key={image.id} className="h-full min-w-full bg-black">
+                  <div key={image.id} className="h-full min-w-full flex items-center justify-center p-4">
                     <img
                       src={image.full_url}
                       alt={`Gallery slide ${index + 1}`}
-                      className="h-full w-full object-contain"
+                      className="max-h-full max-w-full object-contain rounded-2xl shadow-2xl"
                     />
                   </div>
                 ))}
@@ -175,18 +193,20 @@ export default function GalleryPage() {
                   <button
                     type="button"
                     onClick={goToPrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-black/45 px-4 py-3 text-lg font-bold text-white transition hover:bg-black/70 md:left-4"
-                    aria-label="Previous image"
+                    className="absolute left-6 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 p-5 text-white transition hover:bg-accent hover:border-accent md:left-8"
                   >
-                    {"<"}
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
                   </button>
                   <button
                     type="button"
                     onClick={goToNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-black/45 px-4 py-3 text-lg font-bold text-white transition hover:bg-black/70 md:right-4"
-                    aria-label="Next image"
+                    className="absolute right-6 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 p-5 text-white transition hover:bg-accent hover:border-accent md:right-8"
                   >
-                    {">"}
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
                   </button>
                 </>
               ) : null}

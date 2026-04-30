@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Trichy Rockers",
+    "short_name": "TR",
+    "captain": "Vijay",
+    "logo_url": ""
+  },
+  {
+    "id": 2,
+    "name": "Cauvery Kings",
+    "short_name": "CA",
+    "captain": "Surya",
+    "logo_url": ""
+  },
+  {
+    "id": 3,
+    "name": "Rockcity Warriors",
+    "short_name": "RO",
+    "captain": "Ajith",
+    "logo_url": ""
+  },
+  {
+    "id": 4,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 5,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 6,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 7,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 8,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 9,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  },
+  {
+    "id": 10,
+    "name": "Temple City Titans",
+    "short_name": "TE",
+    "captain": "Vikram",
+    "logo_url": ""
+  }
+]

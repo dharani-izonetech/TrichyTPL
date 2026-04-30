@@ -22,6 +22,19 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("tpl_admin_token");
+      if (!window.location.pathname.includes("/admin/login")) {
+        window.location.href = "/admin/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export async function loginAdmin(payload) {
   const { data } = await api.post("/auth/login", payload);
   return data;
