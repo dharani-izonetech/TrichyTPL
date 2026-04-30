@@ -125,18 +125,26 @@
 }
 
 .owner-name {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--team-text-primary);
   margin: 12px 0 8px;
 }
 
+@media (min-width: 768px) {
+  .owner-name { font-size: 1.875rem; }
+}
+
 .owner-desc {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--team-text-secondary);
   line-height: 1.5;
   max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .owner-desc { font-size: 0.875rem; }
 }
 
 .leadership-card {
@@ -183,8 +191,15 @@
 /* Players Section */
 .players-grid {
   display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .players-grid {
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
 }
 
 .player-card {
@@ -206,7 +221,7 @@
 .player-image-box {
   position: relative;
   aspect-ratio: 0.85;
-  background: radial-gradient(circle at top, rgba(75, 27, 27, 0.4), transparent);
+  background: transparent;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -230,22 +245,27 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 16px;
-  background: linear-gradient(to top, rgba(11, 42, 87, 1) 0%, rgba(18, 64, 111, 0.6) 40%, transparent 100%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 30%, transparent 80%);
   color: white;
 }
 
-.player-name { font-size: 1.35rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
-.player-role { font-size: 0.75rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); margin: 6px 0; letter-spacing: 0.05em; }
+.player-name { font-size: 1rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
+@media (min-width: 640px) { .player-name { font-size: 1.35rem; } }
+
+.player-role { font-size: 0.65rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); margin: 4px 0; letter-spacing: 0.05em; }
+@media (min-width: 640px) { .player-role { font-size: 0.75rem; margin: 6px 0; } }
+
 .player-profile {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.3;
-  margin-top: 4px;
+  margin-top: 2px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+@media (min-width: 640px) { .player-profile { font-size: 0.7rem; margin-top: 4px; } }
 
 .view-btn {
   margin-top: 16px;

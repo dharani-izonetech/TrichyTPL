@@ -120,26 +120,21 @@ export default function GalleryPage() {
         <p className="text-slate-400 font-medium">A professional collection of tournament highlights, perfectly fitted for every orientation.</p>
       </div>
 
-      {/* Professional Masonry Collage */}
+      {/* Clean Masonry Gallery */}
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {images.map((image, index) => (
           <article
             key={image.id}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-900 shadow-2xl transition duration-500 hover:-translate-y-2 hover:border-accent/50 cursor-pointer break-inside-avoid"
+            className="group relative break-inside-avoid overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900 shadow-2xl transition duration-500 hover:-translate-y-2 hover:border-accent/50 cursor-pointer md:rounded-[2.5rem]"
             onClick={() => setActiveIndex(index)}
           >
             <img
               src={image.full_url}
               alt={`Gallery image ${index + 1}`}
-              className="w-full h-auto transition duration-700 group-hover:scale-[1.05]"
+              className="w-full h-auto transition duration-700 group-hover:scale-105"
             />
-            {/* Professional Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Tournament Moment</p>
-              <h3 className="mt-1 text-xl font-black uppercase tracking-tight text-white">
-                View Full Moment
-              </h3>
-            </div>
+            {/* Subtle Hover Tint */}
+            <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
           </article>
         ))}
       </div>
@@ -153,7 +148,7 @@ export default function GalleryPage() {
       {modalOpen ? (
         <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl p-3 md:p-6 flex items-center justify-center">
           <div className="mx-auto flex h-full w-full max-w-7xl flex-col">
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex items-center justify-between px-2">
               <div className="flex items-center gap-3">
                 <div className="h-5 w-1 rounded-full bg-accent"></div>
                 <span className="text-xs font-bold uppercase tracking-widest text-white">Detail View</span>
@@ -167,7 +162,7 @@ export default function GalleryPage() {
               </button>
             </div>
 
-            <div className="relative flex-1 overflow-hidden rounded-[2.5rem] border border-white/5 bg-slate-900/50 shadow-2xl">
+            <div className="relative flex-1 overflow-hidden rounded-[2rem] border border-white/5 bg-slate-900/50 shadow-2xl md:rounded-[2.5rem]">
               <div
                 className={`flex h-full ${isDragging ? "" : "transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)"}`}
                 style={{
@@ -182,7 +177,7 @@ export default function GalleryPage() {
                     <img
                       src={image.full_url}
                       alt={`Gallery slide ${index + 1}`}
-                      className="max-h-full max-w-full object-contain rounded-2xl shadow-2xl"
+                      className="max-h-full max-w-full object-contain rounded-xl shadow-2xl md:rounded-2xl"
                     />
                   </div>
                 ))}

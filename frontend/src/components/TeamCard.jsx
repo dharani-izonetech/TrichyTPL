@@ -24,7 +24,7 @@ export default function TeamCard({ team }) {
         )}
       </div>
       <p className="mt-4 text-xs uppercase tracking-[0.14em] text-accentMuted group-hover:text-amber-300">
-        View Players
+        View Team
       </p>
     </Link>
   );

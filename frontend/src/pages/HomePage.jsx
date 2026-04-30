@@ -244,21 +244,17 @@ export default function HomePage() {
             {galleryImages.map((image) => (
               <article
                 key={image.id}
-                className="group relative break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl transition duration-500 hover:-translate-y-1 md:rounded-[2.5rem]"
+                className="group relative break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl transition duration-500 hover:-translate-y-1 md:rounded-[2.5rem] cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.full_url}
                   alt={image.original_name}
                   loading="lazy"
-                  className="w-full h-auto"
+                  className="w-full h-auto transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-6 md:p-8">
-                  <p className="text-[8px] font-black uppercase tracking-widest text-amber-400 md:text-[10px]">Best Moment</p>
-                  <h3 className="text-lg font-black uppercase tracking-tight text-white md:text-2xl">
-                    {image.original_name?.split('.')[0]}
-                  </h3>
-                </div>
+                {/* Clean Hover State */}
+                <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </article>
             ))}
           </div>
@@ -283,14 +279,9 @@ export default function HomePage() {
             <img
               src={selectedImage.full_url}
               alt={selectedImage.original_name}
-              className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain md:max-h-[85vh] md:rounded-2xl shadow-2xl"
+              className="max-h-[85vh] w-auto max-w-full rounded-xl object-contain md:rounded-2xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
-            <div className="mt-6 rounded-full bg-white/5 border border-white/10 px-6 py-2 md:mt-8 md:px-10 md:py-3">
-              <p className="text-[10px] font-black uppercase tracking-widest text-white md:text-xs">
-                {selectedImage.original_name}
-              </p>
-            </div>
           </div>
         </div>
       )}

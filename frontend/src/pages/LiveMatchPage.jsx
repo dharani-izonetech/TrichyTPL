@@ -76,38 +76,43 @@ export default function LiveMatchPage() {
     currentInningsTeam === "A" ? liveData.match?.team_a?.name || "Team A" : liveData.match?.team_b?.name || "Team B";
 
   return (
-    <section className="space-y-6">
-      <div className={`panel ${liveData.match ? "border-accent/40" : ""}`}>
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h1 className="text-4xl font-bold text-white">Live Match</h1>
-          {liveData.match ? (
-            <span className="rounded-full bg-red-600/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-red-400">
-              Live
+    <section className="space-y-6 pb-20">
+      {/* Live Scorecard - Only shown when active to avoid empty message */}
+      {liveData.match && (
+        <div className="panel border-accent/40 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-700">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 pb-4">
+            <div>
+              <h1 className="text-3xl font-black uppercase tracking-tight text-white">Live <span className="text-accent">Match</span></h1>
+              <p className="mt-1 text-xs font-bold text-slate-400 uppercase tracking-widest">{liveData.match.venue}</p>
+            </div>
+            <span className="rounded-full bg-red-600 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-red-600/20 animate-pulse">
+              Live Now
             </span>
-          ) : null}
+          </div>
+          
+          <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <p className="text-2xl font-black text-white md:text-3xl">
+                {liveData.match.team_a?.name} <span className="text-slate-500 mx-2 text-xl font-normal">vs</span> {liveData.match.team_b?.name}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-[10px] font-black uppercase tracking-widest text-accent mb-2">{inningsLabel} Batting</p>
+              <p className="text-5xl font-black text-white tracking-tighter">
+                {formatScore(liveData.match, currentInningsTeam)}
+              </p>
+            </div>
+          </div>
         </div>
-        {liveData.match ? (
-          <>
-            <p className="mt-2 text-lg text-slate-300">
-              {liveData.match.team_a?.name} vs {liveData.match.team_b?.name}
-            </p>
-            <p className="text-sm text-slate-400">{liveData.match.venue}</p>
-          </>
-        ) : (
-          <p className="mt-3 text-slate-400">
-            {loading
-              ? "Loading live score..."
-              : "No live scorecard right now. Start a match as Live from Admin Panel to show score updates here."}
-          </p>
-        )}
-      </div>
+      )}
 
-      <div className="panel">
-        <h2 className="text-2xl font-semibold text-white">Live Match Stream</h2>
-        <p className="mt-1 text-sm text-slate-400">
-          Live stream link is synced from Admin Panel and also visible on this page.
-        </p>
-
+      {/* Stream Section - Dimensions kept exactly as requested */}
+      <div className="panel border-white/5 bg-panel/40 backdrop-blur-xl shadow-2xl">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-8 w-1.5 rounded-full bg-accent"></div>
+          <h2 className="text-2xl font-black uppercase tracking-tight text-white">Live Match <span className="text-accent">Stream</span></h2>
+        </div>
+        
         <div className="mt-4 overflow-hidden rounded-2xl border border-slate-700 bg-black">
           {youtubeEmbedUrl ? (
             <iframe
@@ -122,48 +127,45 @@ export default function LiveMatchPage() {
               Your browser does not support the video tag.
             </video>
           ) : (
-            <div className="grid h-[220px] place-content-center p-4 text-center text-slate-400 md:h-[300px]">
-              No live stream link set yet. Admin can add one in the Admin Panel.
+            <div className="grid h-[240px] place-content-center p-4 text-center text-slate-400 md:h-[460px] bg-slate-900/50 backdrop-blur-sm">
+              <div className="h-16 w-16 rounded-full bg-white/5 flex items-center justify-center mb-4 mx-auto">
+                <svg className="h-8 w-8 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <p className="text-sm font-black text-slate-400 uppercase tracking-widest">No Stream Active</p>
             </div>
           )}
         </div>
       </div>
 
-      {liveData.match ? (
+      {liveData.match && (
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="panel">
-            <p className="text-xs uppercase tracking-[0.14em] text-accentMuted">Current Innings</p>
-            <p className="mt-2 text-2xl font-semibold text-white">{inningsLabel}</p>
-            <p className="mt-2 text-3xl font-bold text-white">{formatScore(liveData.match, currentInningsTeam)}</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-300">
-              <p>
-                Striker: <span className="text-white">{liveData.striker_name || "N/A"}</span>
-              </p>
-              <p>
-                Non-Striker: <span className="text-white">{liveData.non_striker_name || "N/A"}</span>
-              </p>
-              <p>
-                Bowler: <span className="text-white">{liveData.bowler_name || "N/A"}</span>
-              </p>
+          <div className="panel bg-panelSoft/30 border-white/5 backdrop-blur-md">
+            <p className="text-xs font-black uppercase tracking-widest text-accent mb-4">Current Field</p>
+            <div className="space-y-3">
+              <p className="text-sm font-bold text-slate-300">Striker: <span className="text-white uppercase ml-2">{liveData.striker_name || "---"}</span></p>
+              <p className="text-sm font-bold text-slate-300">Non-Striker: <span className="text-white uppercase ml-2">{liveData.non_striker_name || "---"}</span></p>
+              <p className="text-sm font-bold text-slate-300">Bowler: <span className="text-white uppercase ml-2 text-accent">{liveData.bowler_name || "---"}</span></p>
             </div>
           </div>
 
-          <div className="panel">
-            <h2 className="text-2xl font-semibold text-white">Ball-by-Ball Commentary</h2>
-            <div className="mt-4 max-h-80 space-y-2 overflow-y-auto pr-2">
+          <div className="panel bg-panelSoft/30 border-white/5 backdrop-blur-md">
+            <h2 className="text-xl font-black uppercase tracking-tight text-white mb-4">Ball-by-Ball</h2>
+            <div className="max-h-60 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
               {liveData.match.commentary?.length ? (
                 liveData.match.commentary.map((line, index) => (
-                  <p key={`${line}-${index}`} className="rounded-lg border border-slate-700 bg-panelSoft px-3 py-2 text-sm">
+                  <p key={`${line}-${index}`} className="rounded-xl border border-white/5 bg-white/5 px-4 py-2 text-xs text-slate-300 italic">
                     {line}
                   </p>
                 ))
               ) : (
-                <p className="text-slate-400">Commentary not available yet.</p>
+                <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Waiting for commentary...</p>
               )}
             </div>
           </div>
         </div>
-      ) : null}
+      )}
     </section>
   );
 }
