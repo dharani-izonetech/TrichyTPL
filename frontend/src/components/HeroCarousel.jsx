@@ -164,7 +164,7 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                   Trichy
                 </span>
                 <span className="relative text-5xl md:text-8xl lg:text-[8rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/30">
-                  Player
+                  Players
                   <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}

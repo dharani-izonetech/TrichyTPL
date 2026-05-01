@@ -1,71 +1,71 @@
 [
   {
     "id": 1,
-    "name": "Trichy Rockers",
-    "short_name": "TR",
+    "name": "Amico Mavericks",
+    "short_name": "AM",
     "captain": "Vijay",
-    "logo_url": ""
+    "logo_url": "assets/team-logos/amico.png"
   },
   {
     "id": 2,
-    "name": "Cauvery Kings",
-    "short_name": "CA",
+    "name": "Vayalur Warriors",
+    "short_name": "VW",
     "captain": "Surya",
     "logo_url": ""
   },
   {
     "id": 3,
-    "name": "Rockcity Warriors",
-    "short_name": "RO",
+    "name": "Samayapuram Samaritan",
+    "short_name": "SS",
     "captain": "Ajith",
     "logo_url": ""
   },
   {
     "id": 4,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Thillai Thunders",
+    "short_name": "TT",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 5,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Izone Thiruverumbur",
+    "short_name": "IT",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 6,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Srirangam Superstars",
+    "short_name": "SS",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 7,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Guntur Kaalai",
+    "short_name": "GK",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 8,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Cantonment Saamy",
+    "short_name": "CS",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 9,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Morais Dominators",
+    "short_name": "MD",
     "captain": "Vikram",
     "logo_url": ""
   },
   {
     "id": 10,
-    "name": "Temple City Titans",
-    "short_name": "TE",
+    "name": "Rockfort Rider",
+    "short_name": "RR",
     "captain": "Vikram",
     "logo_url": ""
   }

@@ -8,6 +8,30 @@ import {
 } from "../services/api";
 import teamsData from "../data/teams.json";
 
+import amicoLogo from "../assets/players/team-logos/amico.png";
+import vayalurLogo from "../assets/players/team-logos/vayalur.png";
+import samayapuramLogo from "../assets/players/team-logos/samayapuram.png";
+import thillaiLogo from "../assets/players/team-logos/thilai.png";
+import izoneLogo from "../assets/players/team-logos/izone.png";
+import srirangamLogo from "../assets/players/team-logos/srirangam.png";
+import gunturLogo from "../assets/players/team-logos/guntur.png";
+import cantonmentLogo from "../assets/players/team-logos/cantonment.png";
+import moraisLogo from "../assets/players/team-logos/morais.png";
+import rockfortLogo from "../assets/players/team-logos/rockfort.png";
+
+const teamLogos = {
+  "Amico Mavericks": amicoLogo,
+  "Vayalur Warriors": vayalurLogo,
+  "Samayapuram Samaritan": samayapuramLogo,
+  "Thillai Thunders": thillaiLogo,
+  "Izone Thiruverumbur": izoneLogo,
+  "Srirangam Superstars": srirangamLogo,
+  "Guntur Kaalai": gunturLogo,
+  "Cantonment Saamy": cantonmentLogo,
+  "Morais Dominators": moraisLogo,
+  "Rockfort Rider": rockfortLogo
+};
+
 function toYoutubeEmbedUrl(url) {
   if (!url) return null;
   try {
@@ -126,7 +150,7 @@ export default function HomePage() {
           >
             <h1 className="relative text-xl font-black uppercase tracking-[0.2em] text-white/90 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] md:text-4xl">
               <span className="relative z-10">
-                IPL Auction <span className="text-accent">2026</span>
+                Oxina TPL <span className="text-accent">2026</span>
               </span>
 
               <span
@@ -134,7 +158,7 @@ export default function HomePage() {
                 aria-hidden="true"
                 style={{ WebkitBackgroundClip: 'text' }}
               >
-                IPL Auction 2026
+                Oxina TPL 2026
               </span>
             </h1>
             <div className="mt-2 h-px w-20 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60 mx-auto md:w-32"></div>
@@ -172,9 +196,13 @@ export default function HomePage() {
                   to="/teams"
                   className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/5 bg-panelSoft/30 p-4 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-accent md:gap-4 md:p-8"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-800 overflow-hidden shadow-inner group-hover:ring-2 group-hover:ring-accent transition-all duration-300 md:h-20 md:w-20">
-                    {team.logo_url ? (
-                      <img src={team.logo_url} alt={team.name} className="h-full w-full object-cover" />
+                  <div className="flex h-24 w-24 md:h-36 md:w-36 items-center justify-center rounded-full bg-slate-800 overflow-hidden shadow-inner group-hover:ring-2 group-hover:ring-accent transition-all duration-300">
+                    {teamLogos[team.name] ? (
+                      <img
+                        src={teamLogos[team.name]}
+                        alt={team.name}
+                        className="h-full w-full object-cover"
+                      />
                     ) : (
                       <span className="text-xl font-black uppercase tracking-wider text-white md:text-3xl">
                         {team.short_name || team.name.slice(0, 2)}

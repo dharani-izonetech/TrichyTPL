@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 import pic1 from "../../pics/pic6.png";
+import oxinaLogo from "../assets/oxina-logo.png";
 
 const links = [
   { label: "Home", to: "/" },
@@ -31,13 +32,13 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3 text-white group">
           <div className="relative">
             <img 
-              src={pic1} 
+              src={oxinaLogo} 
               alt="TPL" 
               className="h-10 w-10 rounded-full border border-white/10 object-cover transition-transform duration-500 group-hover:rotate-12" 
             />
             <div className="absolute inset-0 rounded-full bg-accent/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </div>
-          <span className="text-xl font-black uppercase tracking-[0.2em] md:text-2xl">TPL</span>
+          <span className="text-xl font-black uppercase tracking-[0.2em] md:text-2xl">Oxina TPL T20</span>
         </Link>
 
         {/* Desktop Navigation */}
