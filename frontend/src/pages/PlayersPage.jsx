@@ -1,12 +1,32 @@
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import roster from "../data/players.json";
+import teamsData from "../data/teams.json";
 import "../styles/TeamsSection.css";
 
 export default function PlayersPage() {
+  const [searchParams] = useSearchParams();
+  const teamId = searchParams.get("teamId");
+
+  const team = teamsData.find((t) => t.id.toString() === teamId);
+  const teamName = team ? team.name : "Team Squad";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [teamId]);
+
   const leadership = roster.leadership || {};
   const players = roster.sections.flatMap((section) => section.players || []);
 
   return (
     <section className="teams-container relative">
+      <div className="mb-10">
+        <h1 className="text-3xl font-black uppercase tracking-widest text-white md:text-5xl">
+          {teamName}
+        </h1>
+        <div className="mt-3 h-1.5 w-20 bg-accent shadow-[0_4px_15px_rgba(239,68,68,0.3)]"></div>
+      </div>
+
       {/* Team Leadership Section */}
       <div className="mb-10 space-y-5">
         <div className="teams-header">
@@ -20,7 +40,7 @@ export default function PlayersPage() {
             <article className="owner-card">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent"></div>
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-400/10 blur-3xl transition duration-500 group-hover:bg-amber-400/20"></div>
-              
+
               <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                 <div className="owner-info">
                   <div className="owner-image-wrapper">

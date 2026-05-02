@@ -193,7 +193,7 @@ export default function HomePage() {
             {teams.slice(0, 8).map((team) => (
               <motion.div key={team.id} variants={cardVariants}>
                 <Link
-                  to="/teams"
+                  to={`/players?teamId=${team.id}`}
                   className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/5 bg-panelSoft/30 p-4 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-accent md:gap-4 md:p-8"
                 >
                   <div className="flex h-24 w-24 md:h-36 md:w-36 items-center justify-center rounded-full bg-slate-800 overflow-hidden shadow-inner group-hover:ring-2 group-hover:ring-accent transition-all duration-300">

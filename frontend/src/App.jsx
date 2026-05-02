@@ -17,6 +17,11 @@ import MatchesPage from "./pages/MatchesPage";
 import PlayersPage from "./pages/PlayersPage";
 import PointsTablePage from "./pages/PointsTablePage";
 import TeamsPage from "./pages/TeamsPage";
+import TeamOwnersPage from "./pages/TeamOwnersPage";
+import OwnerDetailPage from "./pages/OwnerDetailPage";
+import NewsPage from "./pages/NewsPage";
+import NewsDetailPage from "./pages/NewsDetailPage";
+import AdminNewsPage from "./pages/admin/AdminNewsPage";
 
 function ProtectedAdmin({ children }) {
   const { isAuthenticated } = useAuth();
@@ -37,6 +42,10 @@ function AppShell() {
             <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
               <Routes>
                 <Route path="teams" element={<TeamsPage />} />
+                <Route path="team-owners" element={<TeamOwnersPage />} />
+                <Route path="owner/:id" element={<OwnerDetailPage />} />
+                <Route path="news" element={<NewsPage />} />
+                <Route path="news/:id" element={<NewsDetailPage />} />
                 <Route path="players" element={<PlayersPage />} />
                 <Route path="matches" element={<MatchesPage />} />
                 <Route path="points-table" element={<PointsTablePage />} />
@@ -55,6 +64,7 @@ function AppShell() {
                   <Route path="teams" element={<AdminTeamsPage />} />
                   <Route path="players" element={<AdminPlayersPage />} />
                   <Route path="matches" element={<AdminMatchesPage />} />
+                  <Route path="news" element={<AdminNewsPage />} />
                   <Route path="live-score" element={<AdminLiveScorePage />} />
                   <Route path="uploads" element={<AdminMediaPage />} />
                   <Route path="stream" element={<AdminStreamPage />} />

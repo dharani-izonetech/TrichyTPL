@@ -8,15 +8,17 @@ import oxinaLogo from "../assets/oxina-logo.png";
 const links = [
   { label: "Home", to: "/" },
   { label: "Teams", to: "/teams" },
+  { label: "Team Owners", to: "/team-owners" },
+  { label: "News", to: "/news" },
   { label: "Live Match", to: "/live-match" },
   { label: "Gallery", to: "/gallery" }
 ];
 
 function navClass({ isActive }) {
   return [
-    "rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-300",
+    "rounded-full px-4 py-2 text-xs font-bold transition-all duration-300",
     isActive
-      ? "bg-accent text-white shadow-[0_0_20px_rgba(239,68,68,0.4)]"
+      ? "bg-accent text-white shadow-[0_0_15px_rgba(239,68,68,0.3)]"
       : "text-slate-300 hover:bg-white/5 hover:text-white"
   ].join(" ");
 }

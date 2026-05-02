@@ -158,4 +158,28 @@ export async function updateLiveStreamConfig(payload) {
   return data;
 }
 
+export async function listNews(params = {}) {
+  const { data } = await api.get("/news", { params });
+  return data;
+}
+
+export async function getNews(newsId) {
+  const { data } = await api.get(`/news/${newsId}`);
+  return data;
+}
+
+export async function createNews(payload) {
+  const { data } = await api.post("/news", payload);
+  return data;
+}
+
+export async function updateNews(newsId, payload) {
+  const { data } = await api.put(`/news/${newsId}`, payload);
+  return data;
+}
+
+export async function deleteNews(newsId) {
+  await api.delete(`/news/${newsId}`);
+}
+
 export default api;

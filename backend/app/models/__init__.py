@@ -3,6 +3,7 @@ from app.models.match import Match, MatchStatus
 from app.models.media import LiveStreamConfig, MediaAsset
 from app.models.player import Player, PlayerRole
 from app.models.team import Team
+from app.models.news import News
 
 __all__ = [
     "Team",
@@ -13,4 +14,5 @@ __all__ = [
     "AdminUser",
     "MediaAsset",
     "LiveStreamConfig",
+    "News",
 ]

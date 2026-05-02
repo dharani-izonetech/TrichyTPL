@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "team_name": "Izone Thiruverumbur",
+    "owner_name": "Mr.B.Kesavan",
+    "image": "https://www.izonetech.in/img/kesavan.jpg",
+    "description": "Founder and CEO of Izone Technologies. Over 15 years building software for Indian and international businesses. Kesavan started Izone with a focus on engineering quality and long-term client partnerships — values that still shape every project the team takes on.",
+    "business": "Founder/CEO of Izone Technologies",
+    "stats": {
+      "experience": "30+",
+      "projects": "100+",
+      "teams": "5+"
+    }
+  },
+  {
+    "id": 2,
+    "team_name": "Vayalur Warriors",
+    "owner_name": "Mukesh Ambani",
+    "image": "https://imageio.forbes.com/specials-images/imageserve/5c7d7829a7ea434b351ba0b6/0x0.jpg?format=jpg&crop=1837,1839,x206,y250,safe&height=416&width=416&fit=bounds",
+    "description": "Chairman of Reliance Industries and owner of Mumbai Indians. A major driving force behind India's sports infrastructure development.",
+    "business": "Reliance Industries",
+    "stats": {
+      "experience": "40+",
+      "projects": "500+",
+      "teams": "10+"
+    }
+  },
+  {
+    "id": 3,
+    "team_name": "Samayapuram Samaritan",
+    "owner_name": "Preity Zinta",
+    "image": "https://media.crictracker.com/media/featureimage/2018/05/Preity-Zinta-4.jpg",
+    "description": "Co-owner of Punjab Kings and a prominent Bollywood actress. Known for her enthusiastic support and presence at every match.",
+    "business": "PZ Media",
+    "stats": {
+      "experience": "25+",
+      "projects": "50+",
+      "teams": "3+"
+    }
+  },
+  {
+    "id": 4,
+    "team_name": "Thillai Thunders",
+    "owner_name": "N. Srinivasan",
+    "image": "https://bl-i.thgim.com/public/todays-paper/tp-news/2z58x0/article68462107.ece/alternates/FREE_1200/India-Cements_-GBLD4GB67.4.jpg.jpg",
+    "description": "Former ICC Chairman and owner of Chennai Super Kings. A legendary figure in cricket administration and team management.",
+    "business": "India Cements",
+    "stats": {
+      "experience": "50+",
+      "projects": "200+",
+      "teams": "4+"
+    }
+  },
+  {
+    "id": 5,
+    "team_name": "Amico Mavericks",
+    "owner_name": "Kavya Maran",
+    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1RA0WG.img?w=1200&h=900&m=4&q=79",
+    "description": "CEO of Sunrisers Hyderabad. Represents the new generation of cricket owners with a focus on data-driven strategies.",
+    "business": "Sun Group",
+    "stats": {
+      "experience": "10+",
+      "projects": "30+",
+      "teams": "2+"
+    }
+  },
+  {
+    "id": 6,
+    "team_name": "Srirangam Superstars",
+    "owner_name": "Sanjeev Goenka",
+    "image": "https://m.economictimes.com/thumb/height-450,width-600,imgsize-18832,msid-126054203/sanjiv-goenka-3007-sds.jpg",
+    "description": "Owner of Lucknow Super Giants and Chairman of RPSG Group. Known for his ambitious vision and successful business ventures.",
+    "business": "RPSG Group",
+    "stats": {
+      "experience": "35+",
+      "projects": "150+",
+      "teams": "6+"
+    }
+  }
+]

@@ -6,8 +6,11 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.router import api_router
 from app.core.config import settings
-from app.database import SessionLocal
+from app.database import SessionLocal, engine, Base
 from app.services.seed import seed_default_admin
+from app.models.news import News
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title=settings.app_name)
 

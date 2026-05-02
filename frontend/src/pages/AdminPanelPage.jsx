@@ -8,6 +8,7 @@ import getErrorMessage from "../utils/errorMessage";
 
 const adminTabs = [
   { label: "Overview", to: "/admin", end: true },
+  { label: "News", to: "/admin/news" },
   { label: "Uploads", to: "/admin/uploads" },
   { label: "Stream", to: "/admin/stream" }
 ];
