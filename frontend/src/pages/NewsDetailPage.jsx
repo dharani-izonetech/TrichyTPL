@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getNews } from "../services/api";
 
+import { toYoutubeEmbedUrl } from "../utils/youtube";
+
 export default function NewsDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -42,6 +44,8 @@ export default function NewsDetailPage() {
     );
   }
 
+  const youtubeUrl = toYoutubeEmbedUrl(news.video_url);
+
   return (
     <motion.section 
       initial={{ opacity: 0 }}
@@ -63,16 +67,35 @@ export default function NewsDetailPage() {
           <h1 className="text-4xl font-black uppercase tracking-tight text-white md:text-5xl lg:text-6xl leading-tight">
             {news.title}
           </h1>
-          <div className="flex items-center gap-4 text-sm text-slate-500 font-bold uppercase tracking-widest">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 font-bold uppercase tracking-widest">
             <span>{new Date(news.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            {news.location && (
+              <>
+                <span className="h-1 w-1 rounded-full bg-slate-700"></span>
+                <span className="text-accent">{news.location}</span>
+              </>
+            )}
+            <span className="h-1 w-1 rounded-full bg-slate-700"></span>
+            <span>Season: {news.season || "2026"}</span>
             <span className="h-1 w-1 rounded-full bg-slate-700"></span>
             <span>By TPL Editorial</span>
           </div>
         </div>
 
-        <div className="aspect-video overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
-          <img src={news.image} alt={news.title} className="h-full w-full object-cover" />
-        </div>
+        {youtubeUrl ? (
+          <div className="aspect-video overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-2xl">
+            <iframe
+              src={youtubeUrl}
+              title={news.title}
+              className="h-full w-full"
+              allowFullScreen
+            />
+          </div>
+        ) : news.image ? (
+          <div className="aspect-video overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
+            <img src={news.image} alt={news.title} className="h-full w-full object-cover" />
+          </div>
+        ) : null}
 
         <div className="prose prose-invert max-w-none">
           <p className="text-xl font-medium leading-relaxed text-slate-300 first-letter:text-5xl first-letter:font-black first-letter:text-accent first-letter:mr-3 first-letter:float-left whitespace-pre-wrap">

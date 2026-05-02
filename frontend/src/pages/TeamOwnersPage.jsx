@@ -89,11 +89,6 @@ export default function TeamOwnersPage() {
                       <div className="flex flex-wrap gap-2">
                         <div className="flex items-center justify-center rounded-lg border border-white/5 bg-white/5 px-3 py-1.5 backdrop-blur-md">
                           <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
-                            Status: Principal
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-center rounded-lg border border-white/5 bg-white/5 px-3 py-1.5 backdrop-blur-md">
-                          <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
                             Season: 2026
                           </span>
                         </div>

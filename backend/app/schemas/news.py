@@ -3,8 +3,9 @@ from pydantic import BaseModel, ConfigDict
 
 class NewsBase(BaseModel):
     title: str
-    summary: str
     content: str
+    location: str | None = None
+    season: str | None = None
     image: str | None = None
     video_url: str | None = None
     date: datetime | None = None
@@ -14,8 +15,9 @@ class NewsCreate(NewsBase):
 
 class NewsUpdate(BaseModel):
     title: str | None = None
-    summary: str | None = None
     content: str | None = None
+    location: str | None = None
+    season: str | None = None
     image: str | None = None
     video_url: str | None = None
     date: datetime | None = None

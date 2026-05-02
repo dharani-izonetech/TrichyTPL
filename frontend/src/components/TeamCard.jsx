@@ -19,7 +19,7 @@ const teamLogos = {
   "Izone Thiruverumbur": izoneLogo,
   "Srirangam Superstars": srirangamLogo,
   "Guntur Kaalai": gunturLogo,
-  "Cantonment Saamy": cantonmentLogo,
+  "Cantonment Saamy Kings": cantonmentLogo,
   "Morais Dominators": moraisLogo,
   "Rockfort Rider": rockfortLogo
 };

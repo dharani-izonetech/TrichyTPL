@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
 import { listNews, createNews, deleteNews, updateNews, uploadMediaImages } from "../../services/api";
+import useAdminPanelContext from "./useAdminPanelContext";
+import { getYoutubeThumbnail } from "../../utils/youtube";
 
 const initialForm = {
   title: "",
-  summary: "",
   content: "",
+  location: "",
+  season: "",
   image: "",
   video_url: "",
   date: ""
 };
 
-// Helper to format date for datetime-local input
+// Helper to format date for date input
 const formatDateForInput = (dateStr) => {
   if (!dateStr) return "";
   const date = new Date(dateStr);
-  const tzOffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
-  const localISOTime = new Date(date.getTime() - tzOffset).toISOString().slice(0, 16);
+  const tzOffset = date.getTimezoneOffset() * 60000;
+  const localISOTime = new Date(date.getTime() - tzOffset).toISOString().slice(0, 10);
   return localISOTime;
 };
 
 export default function AdminNewsPage() {
+  const { withFeedback, loading: contextLoading } = useAdminPanelContext();
   const [newsList, setNewsList] = useState([]);
   const [form, setForm] = useState(initialForm);
   const [editingId, setEditingId] = useState(null);
@@ -49,30 +53,29 @@ export default function AdminNewsPage() {
       if (selectedFile) {
         const uploadResult = await uploadMediaImages([selectedFile]);
         if (uploadResult && uploadResult.length > 0) {
-          finalImageUrl = uploadResult[0].file_url; 
+          finalImageUrl = uploadResult[0].file_url;
         }
       }
 
       // If date is empty, don't send it so backend can use default
-      const payload = { 
-        ...form, 
+      const payload = {
+        ...form,
         image: finalImageUrl,
         date: form.date ? new Date(form.date).toISOString() : null
       };
 
       if (editingId) {
-        await updateNews(editingId, payload);
-        alert("News updated successfully!");
+        await withFeedback(() => updateNews(editingId, payload), "News updated successfully!");
       } else {
-        await createNews(payload);
-        alert("News created successfully!");
+        await withFeedback(() => createNews(payload), "News created successfully!");
       }
       setForm(initialForm);
       setEditingId(null);
       setSelectedFile(null);
       fetchNews();
     } catch (error) {
-      alert("Error saving news: " + (error.response?.data?.detail || error.message));
+      // Error is handled by withFeedback or we can show it if needed
+      console.error("Error saving news:", error);
     } finally {
       setLoading(false);
     }
@@ -81,10 +84,10 @@ export default function AdminNewsPage() {
   async function handleDelete(id) {
     if (window.confirm("Are you sure you want to delete this news article?")) {
       try {
-        await deleteNews(id);
+        await withFeedback(() => deleteNews(id), "News deleted successfully.");
         fetchNews();
       } catch (error) {
-        alert("Error deleting news.");
+        console.error("Error deleting news:", error);
       }
     }
   }
@@ -113,14 +116,45 @@ export default function AdminNewsPage() {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Publication Date (Optional)</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Date (Optional)</label>
               <input
-                type="datetime-local"
+                type="date"
                 value={form.date}
                 onChange={(e) => setForm({ ...form, date: e.target.value })}
                 className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors appearance-none"
               />
             </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Location</label>
+              <input
+                value={form.location}
+                onChange={(e) => setForm({ ...form, location: e.target.value })}
+                className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors"
+                placeholder="Event Location"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Season</label>
+              <input
+                value={form.season}
+                onChange={(e) => setForm({ ...form, season: e.target.value })}
+                className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors"
+                placeholder="e.g. 2026"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">YouTube Video Link (Optional)</label>
+            <input
+              value={form.video_url}
+              onChange={(e) => setForm({ ...form, video_url: e.target.value })}
+              className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors"
+              placeholder="https://www.youtube.com/watch?v=..."
+            />
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -142,27 +176,6 @@ export default function AdminNewsPage() {
                 placeholder="https://example.com/image.jpg"
               />
             </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">YouTube Video Link (Optional)</label>
-            <input
-              value={form.video_url}
-              onChange={(e) => setForm({ ...form, video_url: e.target.value })}
-              className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors"
-              placeholder="https://www.youtube.com/watch?v=..."
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Summary (Short description)</label>
-            <textarea
-              required
-              value={form.summary}
-              onChange={(e) => setForm({ ...form, summary: e.target.value })}
-              className="w-full rounded-xl border border-white/10 bg-black/20 p-3 text-white focus:border-accent outline-none transition-colors h-20"
-              placeholder="A brief overview of the article..."
-            />
           </div>
 
           <div className="space-y-2">
@@ -208,15 +221,18 @@ export default function AdminNewsPage() {
           {newsList.map((news) => (
             <div key={news.id} className="flex items-center justify-between rounded-2xl border border-white/5 bg-panelSoft/20 p-6 backdrop-blur-md">
               <div className="flex items-center gap-4">
-                <img 
-                  src={news.image || "https://via.placeholder.com/100x100?text=No+Image"} 
-                  alt="" 
-                  className="h-12 w-12 rounded-lg object-cover" 
+                <img
+                  src={news.image || getYoutubeThumbnail(news.video_url) || "https://via.placeholder.com/100x100?text=No+Image"}
+                  alt=""
+                  className="h-12 w-12 rounded-lg object-cover"
                 />
                 <div>
                   <h4 className="font-bold text-white">{news.title}</h4>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest font-black">
-                    {new Date(news.date).toLocaleDateString()} {news.video_url ? "• Includes Video" : ""}
+                  <p className="text-[10px] text-slate-400 italic line-clamp-1 mb-1">
+                    {news.content?.substring(0, 80)}.....
+                  </p>
+                  <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black">
+                    {new Date(news.date).toLocaleDateString()} {news.location ? `• ${news.location}` : ""} {news.season ? `• ${news.season}` : ""} {news.video_url ? "• Includes Video" : ""}
                   </p>
                 </div>
               </div>
@@ -226,8 +242,9 @@ export default function AdminNewsPage() {
                     setEditingId(news.id);
                     setForm({
                       title: news.title,
-                      summary: news.summary,
                       content: news.content,
+                      location: news.location || "",
+                      season: news.season || "",
                       image: news.image || "",
                       video_url: news.video_url || "",
                       date: formatDateForInput(news.date)

@@ -105,36 +105,32 @@ export default function OwnerDetailPage() {
               <span className="h-px w-8 bg-accent"></span>
               Legacy & Impact
             </h3>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 text-center">
-                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500 mb-4">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <div className="text-2xl font-black text-white">{owner.stats?.experience}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Years Experience</div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {(owner.stats || []).map((stat, idx) => {
+                const colors = [
+                  "bg-emerald-500/10 border-emerald-500/20 text-emerald-500",
+                  "bg-blue-500/10 border-blue-500/20 text-blue-500",
+                  "bg-purple-500/10 border-purple-500/20 text-purple-500"
+                ];
+                const icons = [
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />,
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />,
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                ];
+                const colorClass = colors[idx % colors.length];
 
-              <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-blue-500/10 border border-blue-500/20 text-center">
-                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-blue-500/20 text-blue-500 mb-4">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="text-2xl font-black text-white">{owner.stats?.projects}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Projects Led</div>
-              </div>
-
-              <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-purple-500/10 border border-purple-500/20 text-center">
-                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-purple-500/20 text-purple-500 mb-4">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div className="text-2xl font-black text-white">{owner.stats?.teams}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Teams Managed</div>
-              </div>
+                return (
+                  <div key={idx} className={`flex flex-col items-center justify-center p-6 rounded-3xl border ${colorClass.split(' ').slice(0, 2).join(' ')} text-center`}>
+                    <div className={`h-10 w-10 flex items-center justify-center rounded-full bg-white/5 mb-4 ${colorClass.split(' ').pop()}`}>
+                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        {icons[idx % icons.length]}
+                      </svg>
+                    </div>
+                    <div className="text-2xl font-black text-white">{stat.count}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 leading-tight mt-1">{stat.label}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 

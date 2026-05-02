@@ -160,12 +160,18 @@ export async function updateLiveStreamConfig(payload) {
 
 export async function listNews(params = {}) {
   const { data } = await api.get("/news", { params });
-  return data;
+  return data.map(item => ({
+    ...item,
+    image: normalizeMediaUrl(item.image)
+  }));
 }
 
 export async function getNews(newsId) {
   const { data } = await api.get(`/news/${newsId}`);
-  return data;
+  return {
+    ...data,
+    image: normalizeMediaUrl(data.image)
+  };
 }
 
 export async function createNews(payload) {

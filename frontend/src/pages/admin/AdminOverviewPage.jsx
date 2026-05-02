@@ -3,6 +3,11 @@ import useAdminPanelContext from "./useAdminPanelContext";
 
 const adminLinks = [
   {
+    title: "News",
+    description: "Publish and manage news articles.",
+    to: "/admin/news"
+  },
+  {
     title: "Media Uploads",
     description: "Upload gallery and hero images.",
     to: "/admin/uploads"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { listNews } from "../services/api";
+import { getYoutubeThumbnail } from "../utils/youtube";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,13 +74,21 @@ export default function NewsPage() {
                   {/* Left Side: Image (Same as Owner Page) */}
                   <div className="relative h-[250px] w-full shrink-0 md:h-auto md:w-1/4 overflow-hidden">
                     <img
-                      src={news.image}
+                      src={news.image || getYoutubeThumbnail(news.video_url)}
                       alt={news.title}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       onError={(e) => {
                         e.target.src = "https://via.placeholder.com/600x400/1e293b/ffffff?text=Image+Not+Found";
                       }}
                     />
+                    {news.video_url && (
+                      <div className="absolute top-4 right-4 z-10 flex items-center gap-2 rounded-full bg-red-600 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
+                        <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Video
+                      </div>
+                    )}
                   </div>
 
                   {/* Right Side: Details */}
@@ -90,16 +99,23 @@ export default function NewsPage() {
                       </h2>
                     </div>
 
-                    <div className="mb-8 space-y-4">
-                      <p className="text-base leading-relaxed text-slate-300 line-clamp-2">
-                        {news.summary}
+                    <div className="mb-6 space-y-4">
+                      {news.location && (
+                        <div className="flex items-center gap-2">
+                           <span className="text-[10px] font-bold uppercase tracking-widest text-accent">Location:</span>
+                           <span className="text-sm font-medium text-slate-300 uppercase tracking-widest font-black">{news.location}</span>
+                        </div>
+                      )}
+
+                      <p className="text-sm leading-relaxed text-slate-400 line-clamp-1 italic">
+                        {news.content?.substring(0, 100)}.....
                       </p>
 
                       <div className="flex flex-col gap-4 border-t border-white/5 pt-6">
                         <div className="flex flex-col gap-4">
                           <div>
                             <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                              Published Date
+                              Date
                             </span>
                             <span className="text-xl font-bold text-white">
                               {new Date(news.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -109,7 +125,7 @@ export default function NewsPage() {
                           <div className="flex flex-wrap gap-2">
                             <div className="flex items-center justify-center rounded-lg border border-white/5 bg-white/5 px-3 py-1.5 backdrop-blur-md">
                               <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
-                                Season: 2026
+                              Season: {news.season || "2026"}
                               </span>
                             </div>
                           </div>

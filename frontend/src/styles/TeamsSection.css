@@ -87,7 +87,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .owner-image-wrapper {
     width: 100px;
     height: 100px;
@@ -133,7 +133,9 @@
 }
 
 @media (min-width: 768px) {
-  .owner-name { font-size: 1.875rem; }
+  .owner-name {
+    font-size: 1.875rem;
+  }
 }
 
 .owner-desc {
@@ -144,7 +146,9 @@
 }
 
 @media (min-width: 768px) {
-  .owner-desc { font-size: 0.875rem; }
+  .owner-desc {
+    font-size: 0.875rem;
+  }
 }
 
 .leadership-card {
@@ -162,10 +166,14 @@
   transition: all 0.3s ease;
 }
 
-.leadership-card:hover { transform: translateY(-4px); }
+.leadership-card:hover {
+  transform: translateY(-4px);
+}
 
 @media (min-width: 1024px) {
-  .leadership-card { grid-column: span 6; }
+  .leadership-card {
+    grid-column: span 6;
+  }
 }
 
 .manager .role-badge {
@@ -236,7 +244,9 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.player-card:hover .player-image { transform: scale(1.05); }
+.player-card:hover .player-image {
+  transform: scale(1.05);
+}
 
 .player-overlay {
   position: absolute;
@@ -249,11 +259,34 @@
   color: white;
 }
 
-.player-name { font-size: 1rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
-@media (min-width: 640px) { .player-name { font-size: 1.35rem; } }
+.player-name {
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
 
-.player-role { font-size: 0.65rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); margin: 4px 0; letter-spacing: 0.05em; }
-@media (min-width: 640px) { .player-role { font-size: 0.75rem; margin: 6px 0; } }
+@media (min-width: 640px) {
+  .player-name {
+    font-size: 1.35rem;
+  }
+}
+
+.player-role {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 4px 0;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .player-role {
+    font-size: 0.75rem;
+    margin: 6px 0;
+  }
+}
 
 .player-profile {
   font-size: 0.6rem;
@@ -265,7 +298,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-@media (min-width: 640px) { .player-profile { font-size: 0.7rem; margin-top: 4px; } }
+
+@media (min-width: 640px) {
+  .player-profile {
+    font-size: 0.7rem;
+    margin-top: 4px;
+  }
+}
 
 .view-btn {
   margin-top: 16px;
@@ -282,4 +321,6 @@
   transition: background 0.3s ease;
 }
 
-.view-btn:hover { background: rgba(255, 255, 255, 0.2); }
+.view-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

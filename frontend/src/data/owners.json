@@ -1,80 +1,202 @@
 [
   {
     "id": 1,
+    "team_name": "Vayalur Warriors",
+    "owner_name": "M. Palaniyandi",
+    "image": "https://s3.ap-south-1.amazonaws.com/media.thesouthfirst.com/wp-content/uploads/2026/02/6AAF2E50-4215-4AE4-BF95-F42347DE61A8_1_201_a.jpeg",
+    "description": "M. Palaniyandi has played a key role in developing local mining operations in Karur district. Through his leadership at Sri Rathinagiriswarar Blue Metals LLP, he has contributed to the supply chain of construction materials, supporting infrastructure growth and regional development.",
+    "business": "Blue metal production and supply",
+    "stats": [
+      {
+        "count": "10+",
+        "label": "Driving growth in mining & construction materials industry"
+      },
+      {
+        "count": "10+ Workforce Managed",
+        "label": "Built and managed on-ground operational teams"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "team_name": "Cantonment Saamy Kings",
+    "owner_name": "Dr. Ilamurugan",
+    "image": "/src/assets/owners/image.png",
+    "description": "Dr. Ilamurugan is the driving force behind Hotel Blossoms, Trichy, known for delivering exceptional hospitality and customer-focused service. With a strong commitment to quality and guest satisfaction, he has established the hotel as a trusted destination for comfortable and memorable stays.",
+    "business": "Hospitality & Hotel Management",
+    "stats": [
+      {
+        "count": "10+",
+        "label": "Years in Hospitality"
+      },
+      {
+        "count": "Trusted",
+        "label": "Guest Experiences Delivered"
+      },
+      {
+        "count": "2+",
+        "label": "Hospitality Teams Managed"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "team_name": "Rockfort Rider",
+    "owner_name": "Mr. Jeyakarna",
+    "image": "https://angusam.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-05-at-6.35.21-PM.jpeg",
+    "description": "As the Founder and Managing Director of the Oxina Group, he leads a diversified portfolio of companies, including Oxina Cars Private Limited and Oxina Land Developers. With a vision rooted in quality and trust, he has successfully driven the growth of Oxina Hyundai into a premier dealership network across Trichy and Pudukkottai. His focus remains on fostering sustainable business growth, delivering exceptional customer value, and expanding the group’s presence across the South Indian market.",
+    "business": "Affiliation: Oxina Group of Companies / Oxina Motors.",
+    "stats": [
+      {
+        "count": "25+",
+        "label": "Years of Industry Experience"
+      }
+    ]
+  },
+  {
+    "id": 2,
     "team_name": "Izone Thiruverumbur",
     "owner_name": "Mr.B.Kesavan",
     "image": "https://www.izonetech.in/img/kesavan.jpg",
     "description": "Founder and CEO of Izone Technologies. Over 15 years building software for Indian and international businesses. Kesavan started Izone with a focus on engineering quality and long-term client partnerships — values that still shape every project the team takes on.",
     "business": "Founder/CEO of Izone Technologies",
-    "stats": {
-      "experience": "30+",
-      "projects": "100+",
-      "teams": "5+"
-    }
-  },
-  {
-    "id": 2,
-    "team_name": "Vayalur Warriors",
-    "owner_name": "Mukesh Ambani",
-    "image": "https://imageio.forbes.com/specials-images/imageserve/5c7d7829a7ea434b351ba0b6/0x0.jpg?format=jpg&crop=1837,1839,x206,y250,safe&height=416&width=416&fit=bounds",
-    "description": "Chairman of Reliance Industries and owner of Mumbai Indians. A major driving force behind India's sports infrastructure development.",
-    "business": "Reliance Industries",
-    "stats": {
-      "experience": "40+",
-      "projects": "500+",
-      "teams": "10+"
-    }
-  },
-  {
-    "id": 3,
-    "team_name": "Samayapuram Samaritan",
-    "owner_name": "Preity Zinta",
-    "image": "https://media.crictracker.com/media/featureimage/2018/05/Preity-Zinta-4.jpg",
-    "description": "Co-owner of Punjab Kings and a prominent Bollywood actress. Known for her enthusiastic support and presence at every match.",
-    "business": "PZ Media",
-    "stats": {
-      "experience": "25+",
-      "projects": "50+",
-      "teams": "3+"
-    }
-  },
-  {
-    "id": 4,
-    "team_name": "Thillai Thunders",
-    "owner_name": "N. Srinivasan",
-    "image": "https://bl-i.thgim.com/public/todays-paper/tp-news/2z58x0/article68462107.ece/alternates/FREE_1200/India-Cements_-GBLD4GB67.4.jpg.jpg",
-    "description": "Former ICC Chairman and owner of Chennai Super Kings. A legendary figure in cricket administration and team management.",
-    "business": "India Cements",
-    "stats": {
-      "experience": "50+",
-      "projects": "200+",
-      "teams": "4+"
-    }
+    "stats": [
+      {
+        "count": "30+",
+        "label": "Years Driving Business Excellence"
+      },
+      {
+        "count": "100+",
+        "label": "Projects Executed Across Industries"
+      },
+      {
+        "count": "5+",
+        "label": "Elite Teams Built & Managed"
+      }
+    ]
   },
   {
     "id": 5,
     "team_name": "Amico Mavericks",
-    "owner_name": "Kavya Maran",
-    "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1RA0WG.img?w=1200&h=900&m=4&q=79",
-    "description": "CEO of Sunrisers Hyderabad. Represents the new generation of cricket owners with a focus on data-driven strategies.",
-    "business": "Sun Group",
-    "stats": {
-      "experience": "10+",
-      "projects": "30+",
-      "teams": "2+"
-    }
+    "owner_name": "S.Ananda Kumar",
+    "image": "https://www.amicochits.com/assets/image/anand.png",
+    "description": "S. Ananda Kumar leads Amico Chit Funds Private Limited, a trusted financial services company specializing in secure and flexible chit fund solutions. With a strong focus on transparency and customer satisfaction, he has built a reliable platform that supports individuals and businesses in achieving their financial goals.",
+    "business": "Chit Fund Services & Financial Solutions",
+    "stats": [
+      {
+        "count": "25+",
+        "label": "Years in Financial Services"
+      },
+      {
+        "count": "Numerous",
+        "label": "Chit Schemes Managed"
+      },
+      {
+        "count": "Growing",
+        "label": "Customer Network"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "team_name": "Morais Dominators",
+    "owner_name": "Leyronne Morais",
+    "image": "https://media.licdn.com/dms/image/v2/D4E03AQGRzpqZcMQPaw/profile-displayphoto-shrink_800_800/B4EZcQ3rSsH0Ac-/0/1748334720952?e=1779321600&v=beta&t=FwXiMzPyQoYWZ4N0BdIVOdjO1Ba9AqGqzeWTU37qAgQ",
+    "description": "Founder & Managing Director of Morais Group. A dynamic business leader known for driving innovation, building strong enterprises, and contributing to impactful ventures across industries.",
+    "business": "Founder & Managing Director of Morais Group",
+    "stats": [
+      {
+        "count": "20+",
+        "label": "Years of Industry Experience"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "team_name": "Samayapuram Samaritan",
+    "owner_name": "Team Owner",
+    "image": "",
+    "description": "Co-owner of Punjab Kings and a prominent Bollywood actress. Known for her enthusiastic support and presence at every match.",
+    "business": "PZ Media",
+    "stats": [
+      {
+        "count": "25+",
+        "label": "Years Driving Business Excellence"
+      },
+      {
+        "count": "50+",
+        "label": "Projects Executed Across Industries"
+      },
+      {
+        "count": "3+",
+        "label": "Elite Teams Built & Managed"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "team_name": "Thillai Thunders",
+    "owner_name": "Team Owner",
+    "image": "",
+    "description": "Former ICC Chairman and owner of Chennai Super Kings. A legendary figure in cricket administration and team management.",
+    "business": "India Cements",
+    "stats": [
+      {
+        "count": "50+",
+        "label": "Years Driving Business Excellence"
+      },
+      {
+        "count": "200+",
+        "label": "Projects Executed Across Industries"
+      },
+      {
+        "count": "4+",
+        "label": "Elite Teams Built & Managed"
+      }
+    ]
   },
   {
     "id": 6,
     "team_name": "Srirangam Superstars",
-    "owner_name": "Sanjeev Goenka",
-    "image": "https://m.economictimes.com/thumb/height-450,width-600,imgsize-18832,msid-126054203/sanjiv-goenka-3007-sds.jpg",
+    "owner_name": "Team Owner",
+    "image": "",
     "description": "Owner of Lucknow Super Giants and Chairman of RPSG Group. Known for his ambitious vision and successful business ventures.",
     "business": "RPSG Group",
-    "stats": {
-      "experience": "35+",
-      "projects": "150+",
-      "teams": "6+"
-    }
+    "stats": [
+      {
+        "count": "35+",
+        "label": "Years Driving Business Excellence"
+      },
+      {
+        "count": "150+",
+        "label": "Projects Executed Across Industries"
+      },
+      {
+        "count": "6+",
+        "label": "Elite Teams Built & Managed"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "team_name": "Guntur Kaalai",
+    "owner_name": "Manoj Badale",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6O-wH_z-vO5j0m_yvJ8_ZkQ8R9_8_8_8_8&s",
+    "description": "Chairman of Rajasthan Royals. Known for his pioneering work in cricket analytics and building sustainable sports franchises.",
+    "business": "Blenheim Chalcot",
+    "stats": [
+      {
+        "count": "20+",
+        "label": "Years Driving Business Excellence"
+      },
+      {
+        "count": "40+",
+        "label": "Projects Executed Across Industries"
+      },
+      {
+        "count": "4+",
+        "label": "Elite Teams Built & Managed"
+      }
+    ]
   }
 ]
