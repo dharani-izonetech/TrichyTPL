@@ -79,7 +79,7 @@
     "id": 5,
     "team_name": "Amico Mavericks",
     "owner_name": "S.Ananda Kumar",
-    "image": "https://www.amicochits.com/assets/image/anand.png",
+    "image": "/src/assets/owners/AnandhaKumar.png",
     "description": "S. Ananda Kumar leads Amico Chit Funds Private Limited, a trusted financial services company specializing in secure and flexible chit fund solutions. With a strong focus on transparency and customer satisfaction, he has built a reliable platform that supports individuals and businesses in achieving their financial goals.",
     "business": "Chit Fund Services & Financial Solutions",
     "stats": [
@@ -115,8 +115,8 @@
     "id": 3,
     "team_name": "Samayapuram Samaritan",
     "owner_name": "Team Owner",
-    "image": "",
-    "description": "Co-owner of Punjab Kings and a prominent Bollywood actress. Known for her enthusiastic support and presence at every match.",
+    "image": "/src/assets/owners/Srirangam.png",
+     "description": "Co-owner of Punjab Kings and a prominent Bollywood actress. Known for her enthusiastic support and presence at every match.",
     "business": "PZ Media",
     "stats": [
       {

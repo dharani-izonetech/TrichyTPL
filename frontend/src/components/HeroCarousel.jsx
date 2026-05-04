@@ -116,9 +116,9 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
         >
           {/* Background Image Layer */}
           <motion.div
-            initial={{ scale: 1.2, filter: "blur(4px)" }}
-            animate={{ scale: 1.05, filter: "blur(0px)" }}
-            transition={{ duration: 12, ease: "linear" }}
+            initial={{ scale: 1, filter: "blur(0px)" }}
+            animate={{ scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0 }}
             className="absolute inset-0 h-full w-full"
           >
             <img src={slides[activeIndex].image} alt={slides[activeIndex].title} className="h-full w-full object-cover brightness-[0.6]" />
@@ -160,10 +160,10 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                 variants={letterVariants}
                 className="mt-6 flex flex-col font-black uppercase leading-none tracking-tighter text-white"
               >
-                <span className="text-4xl md:text-7xl lg:text-8xl opacity-90">
+                <span className="text-3xl md:text-7xl lg:text-8xl opacity-90">
                   Trichy
                 </span>
-                <span className="relative text-5xl md:text-8xl lg:text-[8rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/30">
+                <span className="relative text-4xl md:text-8xl lg:text-[8rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/30">
                   Players
                   <motion.span
                     initial={{ width: 0 }}
@@ -172,7 +172,7 @@ export default function HeroCarousel({ uploadedImages = [], useUploadedHero = fa
                     className="absolute -bottom-2 left-0 h-1 bg-accent/60 md:-bottom-4"
                   />
                 </span>
-                <span className="text-4xl md:text-7xl lg:text-8xl text-accent">
+                <span className="text-3xl md:text-7xl lg:text-8xl text-accent">
                   League
                 </span>
               </motion.h1>

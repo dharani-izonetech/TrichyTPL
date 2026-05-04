@@ -40,7 +40,7 @@ export default function Navbar() {
             />
             <div className="absolute inset-0 rounded-full bg-accent/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </div>
-          <span className="text-xl font-black uppercase tracking-[0.2em] md:text-2xl">Oxina TPL T20</span>
+          <span className="text-lg font-black uppercase tracking-widest md:text-2xl md:tracking-[0.2em]">Oxina TPL T20</span>
         </Link>
 
         {/* Desktop Navigation */}

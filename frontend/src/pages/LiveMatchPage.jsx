@@ -92,13 +92,13 @@ export default function LiveMatchPage() {
           
           <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <p className="text-2xl font-black text-white md:text-3xl">
-                {liveData.match.team_a?.name} <span className="text-slate-500 mx-2 text-xl font-normal">vs</span> {liveData.match.team_b?.name}
+              <p className="text-xl font-black text-white md:text-3xl">
+                {liveData.match.team_a?.name} <span className="text-slate-500 mx-1 text-lg font-normal md:mx-2">vs</span> {liveData.match.team_b?.name}
               </p>
             </div>
-            <div className="text-right">
-              <p className="text-[10px] font-black uppercase tracking-widest text-accent mb-2">{inningsLabel} Batting</p>
-              <p className="text-5xl font-black text-white tracking-tighter">
+            <div className="text-left md:text-right">
+              <p className="text-[10px] font-black uppercase tracking-widest text-accent mb-1 md:mb-2">{inningsLabel} Batting</p>
+              <p className="text-3xl font-black text-white tracking-tighter md:text-5xl">
                 {formatScore(liveData.match, currentInningsTeam)}
               </p>
             </div>
