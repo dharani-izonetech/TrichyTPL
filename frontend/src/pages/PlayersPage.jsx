@@ -1,22 +1,56 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import roster from "../data/players.json";
 import teamsData from "../data/teams.json";
 import "../styles/TeamsSection.css";
 
 export default function PlayersPage() {
   const [searchParams] = useSearchParams();
-  const teamId = searchParams.get("teamId");
+  const teamId = searchParams.get("teamId") || "1";
+  const [roster, setRoster] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const team = teamsData.find((t) => t.id.toString() === teamId);
   const teamName = team ? team.name : "Team Squad";
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Dynamically load the team roster
+    const loadRoster = async () => {
+      setLoading(true);
+      try {
+        // Using dynamic import for the specific team file
+        const module = await import(`../data/players/team${teamId}.json`);
+        setRoster(module.default);
+      } catch (err) {
+        console.error("Failed to load roster for team:", teamId, err);
+        setRoster(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRoster();
   }, [teamId]);
 
+  if (loading) {
+    return (
+      <div className="flex h-96 items-center justify-center">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-accent border-t-transparent"></div>
+      </div>
+    );
+  }
+
+  if (!roster) {
+    return (
+      <div className="rounded-2xl border border-dashed border-slate-700 bg-panel/40 px-6 py-16 text-center text-slate-400">
+        Roster not found for this team.
+      </div>
+    );
+  }
+
   const leadership = roster.leadership || {};
-  const players = roster.sections.flatMap((section) => section.players || []);
+  const players = (roster.sections || []).flatMap((section) => section.players || []);
 
   return (
     <section className="teams-container relative">
@@ -35,7 +69,6 @@ export default function PlayersPage() {
         </div>
 
         <div className="leadership-grid">
-          {/* Owner Card */}
           {leadership.owner && (
             <article className="owner-card">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-transparent"></div>
@@ -61,93 +94,39 @@ export default function PlayersPage() {
             </article>
           )}
 
-          {/* Manager Card */}
+          {/* Manager and Coach cards hidden as requested */}
+          {/*
           {leadership.manager && (
             <article className="leadership-card manager">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 via-transparent to-transparent"></div>
-              <div className="relative z-10 flex items-center gap-5">
-                <div className="leadership-image-wrapper relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10">
-                  <img
-                    src={leadership.manager.image}
-                    alt={leadership.manager.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-                <div>
-                  <span className="role-badge">{leadership.manager.role}</span>
-                  <h3 className="mt-2 text-2xl font-bold uppercase tracking-[0.04em] text-white leading-tight">
-                    {leadership.manager.name}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
-                    {leadership.manager.description}
-                  </p>
-                </div>
-              </div>
+              ... (Manager details)
             </article>
           )}
 
-          {/* Coach Card */}
           {leadership.coach && (
             <article className="leadership-card coach">
-              <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/10 via-transparent to-transparent"></div>
-              <div className="relative z-10 flex items-center gap-5">
-                <div className="leadership-image-wrapper relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10">
-                  <img
-                    src={leadership.coach.image}
-                    alt={leadership.coach.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-                <div>
-                  <span className="role-badge">{leadership.coach.role}</span>
-                  <h3 className="mt-2 text-2xl font-bold uppercase tracking-[0.04em] text-white leading-tight">
-                    {leadership.coach.name}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
-                    {leadership.coach.description}
-                  </p>
-                </div>
-              </div>
+              ... (Coach details)
             </article>
           )}
+          */}
         </div>
       </div>
 
-      {/* Players Section */}
+      {/* Players Section commented out as requested */}
+      {/*
       {players.length > 0 ? (
         <div>
-          <div className="teams-header">
-            <div className="header-accent squad-accent"></div>
-            <h2 className="teams-title">Players</h2>
-          </div>
-          <div className="players-grid">
-            {players.map((player) => (
-              <article key={player.id} className="player-card">
-                <div className="player-image-box">
-                  <img
-                    src={player.image}
-                    alt={player.name}
-                    loading="lazy"
-                    className="player-image"
-                  />
-                </div>
-
-                <div className="player-overlay">
-                  <h2 className="player-name">{player.name}</h2>
-                  <p className="player-role">{player.role}</p>
-                  <p className="player-profile">{player.profile}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          ... (Players grid)
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center text-slate-500">
+        <div className="rounded-2xl border border-dashed border-slate-700 bg-panel/40 px-6 py-16 text-center text-slate-400">
           No players available.
         </div>
       )}
+      */}
+
+      <div className="mt-12 rounded-2xl border border-dashed border-slate-700 bg-panel/40 px-6 py-12 text-center text-slate-400">
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-500">Squad & Staff Details Coming Soon</p>
+      </div>
     </section>
   );
 }

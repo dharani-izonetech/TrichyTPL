@@ -1,0 +1,133 @@
+{
+  "leadership": {
+    "owner": {
+      "name": "Team Owner",
+      "role": "Owner",
+      "image": "https://via.placeholder.com/400",
+      "description": "The owner of Srirangam Superstars, dedicated to the team's success in TPL."
+    },
+    "manager": {
+      "name": "Team Manager",
+      "role": "Manager",
+      "image": "https://via.placeholder.com/204",
+      "description": "Handles coordination, structure, and match-day support."
+    },
+    "coach": {
+      "name": "Team Coach",
+      "role": "Coach",
+      "image": "https://via.placeholder.com/204",
+      "description": "Focuses on tactics, training intensity, and player growth."
+    }
+  },
+  "sections": [
+    {
+      "title": "Star Players",
+      "players": [
+        {
+          "id": 1,
+          "name": "Virat Kohli",
+          "role": "Batsman",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/316500/316523.png",
+          "profile": "Former captain and prolific run-scorer with unmatched consistency.",
+          "stats": {
+            "runs": 8000,
+            "wickets": 4,
+            "strike_rate": 138.5,
+            "matches": 250
+          }
+        },
+        {
+          "id": 2,
+          "name": "Jasprit Bumrah",
+          "role": "Bowler",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/316500/316584.png",
+          "profile": "Lead pacer with exceptional death bowling skills and lethal yorkers.",
+          "stats": {
+            "runs": 150,
+            "wickets": 160,
+            "strike_rate": 85.0,
+            "matches": 120
+          }
+        },
+        {
+          "id": 3,
+          "name": "MS Dhoni",
+          "role": "Wicketkeeper",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/319900/319946.png",
+          "profile": "Legendary captain and finisher, known for his calm demeanor and lightning stumpings.",
+          "stats": {
+            "runs": 5000,
+            "wickets": 0,
+            "strike_rate": 137.8,
+            "matches": 260
+          }
+        },
+        {
+          "id": 4,
+          "name": "Ravindra Jadeja",
+          "role": "All-rounder",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/316500/316531.png",
+          "profile": "Reliable all-rounder and gun fielder who can change the game in all three departments.",
+          "stats": {
+            "runs": 2800,
+            "wickets": 155,
+            "strike_rate": 129.5,
+            "matches": 230
+          }
+        },
+        {
+          "id": 5,
+          "name": "Rohit Sharma",
+          "role": "Batsman",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/316500/316521.png",
+          "profile": "Opener known for his elegant strokeplay and ability to score massive hundreds.",
+          "stats": {
+            "runs": 6500,
+            "wickets": 15,
+            "strike_rate": 131.0,
+            "matches": 255
+          }
+        },
+        {
+          "id": 6,
+          "name": "Hardik Pandya",
+          "role": "All-rounder",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/316500/316578.png",
+          "profile": "Dynamic all-rounder with explosive hitting power and crucial bowling breakthroughs.",
+          "stats": {
+            "runs": 2500,
+            "wickets": 60,
+            "strike_rate": 145.8,
+            "matches": 140
+          }
+        },
+        {
+          "id": 7,
+          "name": "Shubman Gill",
+          "role": "Batsman",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/322600/322611.png",
+          "profile": "Young batting sensation known for his timing and technical excellence.",
+          "stats": {
+            "runs": 3000,
+            "wickets": 0,
+            "strike_rate": 134.5,
+            "matches": 100
+          }
+        },
+        {
+          "id": 8,
+          "name": "Rashid Khan",
+          "role": "Bowler",
+          "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320/lsci/db/PICTURES/CMS/313000/313025.png",
+          "profile": "World-class leg-spinner and handy batsman with a bag of tricks.",
+          "stats": {
+            "runs": 500,
+            "wickets": 145,
+            "strike_rate": 155.0,
+            "matches": 115
+          }
+        }
+      ]
+    }
+  ]
+}

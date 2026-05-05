@@ -1,21 +1,21 @@
 {
   "leadership": {
     "owner": {
-      "name": "Ranbir Kapoor",
+      "name": "Team Owner",
       "role": "Owner",
-      "image": "https://www.fuchsiamagazine.com/wp-content/uploads/2023/05/1600-x-900-R-1.jpg",
-      "description": "The owner card sits at the top as the primary leadership badge for the team."
+      "image": "https://via.placeholder.com/400",
+      "description": "The owner of Thillai Thunders, dedicated to the team's success in TPL."
     },
     "manager": {
-      "name": "Ranveer sign",
+      "name": "Team Manager",
       "role": "Manager",
-      "image": "https://tse1.mm.bing.net/th/id/OIP.REXPqDsdc5JR7ZO9W4NS1AAAAA?w=204&h=204&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "image": "https://via.placeholder.com/204",
       "description": "Handles coordination, structure, and match-day support."
     },
     "coach": {
-      "name": "Yash",
+      "name": "Team Coach",
       "role": "Coach",
-      "image": "https://yespunjab.com/wp-content/uploads/2025/04/Yash-Actor-1-696x497.jpg",
+      "image": "https://via.placeholder.com/204",
       "description": "Focuses on tactics, training intensity, and player growth."
     }
   },

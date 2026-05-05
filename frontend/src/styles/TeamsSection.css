@@ -16,8 +16,14 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 24px 16px;
   font-family: 'Inter', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .teams-container {
+    padding: 40px 24px;
+  }
 }
 
 .teams-header {
@@ -41,12 +47,18 @@
 }
 
 .teams-title {
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   color: var(--team-text-primary);
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  .teams-title {
+    font-size: 1.875rem;
+  }
 }
 
 /* Leadership Grid */
@@ -61,15 +73,23 @@
   grid-column: span 12;
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 20px;
   border: 1px solid var(--team-border-subtle);
   background: linear-gradient(135deg, #151424, #121b30, #0d1524);
-  padding: 24px;
+  padding: 20px;
   box-shadow: var(--team-shadow-premium);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   transition: transform 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .owner-card {
+    border-radius: 24px;
+    padding: 32px;
+    gap: 20px;
+  }
 }
 
 .owner-card:hover {
@@ -82,15 +102,17 @@
   gap: 20px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .owner-info {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 
   .owner-image-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 8px;
   }
 }
 
